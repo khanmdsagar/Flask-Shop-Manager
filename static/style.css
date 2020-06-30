@@ -1,0 +1,35 @@
+.appWrapper{
+    width:300px;
+    border-radius: 15px;
+}
+
+.flashMessage{
+    background-color: #117A65;
+    padding: 10px;
+}
+
+.page-link{
+    border: 1px solid #117A65; 
+    padding: 9px 9px; 
+    cursor: pointer; 
+    border-radius: 3px;
+    text-align: center;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.page-link-active{
+    border: 1px solid #117A65; 
+    padding: 9px 9px; 
+    cursor: pointer; 
+    border-radius: 3px;
+    text-align: center;
+    background-color: #117A65;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+}

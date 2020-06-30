@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Insert Page {% endblock %}
+{% include "navbar.html" %}
+ 
+{% block content%}
+ <!--insert Modal-->
+ <div class="app">
+    <div class="center">
+     <div class="appWrapper bg-white text-center p-all20">
+
+         <form action="/uploadFile" method="POST" enctype="multipart/form-data"> 
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <p class="flashMessage m-bottom20 round-br5 fwhite">{{ messages[0] }}</p>
+            {% endif %}
+            {% endwith %}
+
+            <div class="ImageUpload">
+               <div class="profileImageSection">
+                  <input name="file" type="file" onchange="preview(event)" id="profileInputFile" hidden="hidden">
+                  <img class="profileImageView" id="profileImageView">
+                  <span onclick="preview(event)" id="profileCamera" class="profileCamera material-icons">camera_alt</span>
+               </div>
+            </div>
+
+            <input required name="name" class="width200px m-top10 input br-gray input-focus-pest" type="text" placeholder="Enter name"><br>
+            <input required name="price" class="width200px m-top10 input br-gray input-focus-pest" type="text" placeholder="Enter price"><br>
+            <input required name="quantity" class="width200px m-top10 input br-gray input-focus-pest" type="text" placeholder="Enter quantity"><br>
+            <input class="width100px m-top10 btn bg-pest fwhite" type="submit" value="Save">
+         </form>
+      </div>
+    </div>
+ </div>
+ {% endblock %}

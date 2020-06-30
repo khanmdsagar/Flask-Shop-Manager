@@ -1,0 +1,3 @@
+sudo apt install python3-venv
+python3 -m venv my-project-env
+source my-project-env/bin/activate

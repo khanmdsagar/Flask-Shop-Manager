@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+{% include "navbar.html" %}
+
+{% block content %}
+<div class="app">
+<a href="/insert-page" class="m-top10 round-br3 bg-pest fwhite p-all6 material-icons">add</a>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <p class="flashMessage m-bottom20 m-top10 round-br5 fwhite">{{ messages[0] }}</p>
+            {% endif %}
+            {% endwith %}
+
+ <div class="mobile-xscroll bg-white">
+    <table class="table m-top20">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for item in allItems.items %}
+        <tr class="table-hover">
+            <td> <img style="border-radius: 5px; " width="50px" height="50px" src="/static/{{ item.photoPath }}"/> </td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}<lebel style="font-size: 12px">$</lebel></td>
+            <td>{{ item.quantity }}</td>
+            <td><a href="/update-page/{{ item.id }}" style="border-radius: 50%;" class="btn fgreen bg-white material-icons">edit</a></td>
+            <td><a href="/confirm_delete/{{ item.id }}" style="border-radius: 50%;" class="btn fred bg-white material-icons">delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+   
+    <div class="pagination m-top30">
+        {% for page_num in allItems.iter_pages(left_edge = 2, right_edge = 2, left_current = 2, right_current = 2) %}
+            {% if page_num %}
+                {% if allItems.page == page_num %}
+                    <a class="page-link-active" href="{{ url_for('index', page = page_num) }}">{{page_num}}</a>
+                {% else %}
+                    <a class="page-link" href="{{ url_for('index', page = page_num) }}">{{page_num}}</a>
+                {% endif %}
+            {% else %}
+                <a class="page-link" href="">...</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
